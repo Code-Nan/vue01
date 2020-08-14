@@ -9,12 +9,25 @@ const webpack = require('webpack');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
+    devtool: 'inline-source-map',
     // 配置 dev-server 命令参数
     devServer: {
         open: true,
         port: 3000,
         contentBase: 'src',
-        hot: true
+        hot: true,
+        inline: true,
+        stats: 'errors-only',
+        proxy: {
+            '/api': {
+                target: 'http://localhost:8888/',
+                changeOrigin: true,
+                secure:false,
+                pathRewrite: {
+                    '^/api': ''
+                }
+            }
+        }
     },
     //所有webpack 插件
     plugins: [
@@ -67,6 +80,12 @@ module.exports = {
                             "style": true
                         }
                     ]]]
+                }
+            },
+            {
+                test: /\.js\.map$/,
+                use: {
+                    loader: 'file-loader'
                 }
             }
 

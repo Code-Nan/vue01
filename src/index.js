@@ -8,6 +8,10 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
+//导入vue-resource包
+import VueResource from 'vue-resource'
+Vue.use(VueResource)
+
 //导入bootstrap包
 import  'bootstrap/dist/css/bootstrap.css'
 
@@ -19,12 +23,11 @@ Vue.use(MintUI)
 // Vue.component(Button.name,Button)
 // Vue.component(Toast.name,Toast)
 
-//导入mui
+//导入mui样式
 import './lib/mui/dist/css/mui.min.css'
+import './lib/mui/dist/css/icons-extra.css'
 
 //导入css样式
-
-
 
 
 //引入app和路由
