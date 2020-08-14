@@ -1,6 +1,6 @@
 /*
  * @Author: dongnan
- * @Descripttion: 
+ * @Descripttion: 路由
  * @Date: 2020-08-10 20:22:55
  */
 import VueRouter from 'vue-router'
@@ -11,6 +11,10 @@ import SearchContainer from './components/tabbar/SearchContainer.vue'
 
 var router = new VueRouter({
     routes: [
+        {
+            path: '/',
+            redirect: '/home'
+        },
         {
             path: '/home',
             component: HomeContainer

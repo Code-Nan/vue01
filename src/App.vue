@@ -8,7 +8,9 @@
         <!-- header -->
         <mt-header fixed title="南游商店"></mt-header>
         <!-- content -->
-        <router-view></router-view>
+        <transition>
+            <router-view></router-view>
+        </transition>
         <!-- bottom -->
         <nav class="mui-bar mui-bar-tab">
             <router-link class="mui-tab-item" to="/home">
@@ -48,5 +50,20 @@ export default {
 <style lang="scss" scoped>
 .app-container {
     margin-top: 40px;
+    overflow-x: hidden;
 }
+.v-enter-active,
+.v-leave-active{
+    transition: all .5s ease;
+}
+.v-enter{
+    opacity: 0;
+    transform: translateX(100%);
+}
+.v-leave-to{
+    opacity: 0;
+    transform: translateX(-100%);
+    position: absolute;
+}
+
 </style>
