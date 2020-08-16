@@ -12,8 +12,17 @@ Vue.use(VueRouter)
 import VueResource from 'vue-resource'
 Vue.use(VueResource)
 
+//配置http默认请求
+Vue.http.options.emulateJSON = true
+
+//过滤器
+import moment from 'moment'
+Vue.filter('dateFormat', (dataStr, pattern = "YYYY-MM-DD HH:mm:ss") => {
+    return moment(dataStr).format(pattern)
+})
+
 //导入bootstrap包
-import  'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap/dist/css/bootstrap.css'
 
 //导入mint-ui包
 import MintUI from 'mint-ui'
