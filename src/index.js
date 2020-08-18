@@ -17,8 +17,8 @@ Vue.http.options.emulateJSON = true
 
 //过滤器
 import moment from 'moment'
-Vue.filter('dateFormat', (dataStr, pattern = "YYYY-MM-DD HH:mm:ss") => {
-    return moment(dataStr).format(pattern)
+Vue.filter('dateFormat', (dateStr, pattern = "YYYY-MM-DD HH:mm:ss") => {
+    return moment(dateStr).format(pattern)
 })
 
 //导入bootstrap包
@@ -48,3 +48,17 @@ var vm = new Vue({
     render: c => c(app),
     router
 })
+
+//获取当前时间
+Vue.prototype.getNowFormatDate = function() {
+    let date = new Date();
+    let year = date.getFullYear();
+    let month = date.getMonth() + 1;
+    let day = date.getDate();
+    let hour = date.getHours();
+    let minute = date.getMinutes();
+    let second = date.getSeconds();
+    let dateStr = year+'-'+month+'-'+day+' '+hour+':'+minute+':'+second;
+    return moment(dateStr).format('YYYY-MM-DD HH:mm:ss')
+  };
+

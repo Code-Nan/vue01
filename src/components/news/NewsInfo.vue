@@ -6,34 +6,46 @@
             <span>点击:{{NewsInfo.click}}次</span>
         </p>
         <hr />
+        <!-- 内容 -->
         <div class="content" v-html="NewsInfo.content"></div>
+        <!-- 评论 -->
+        <comment-box :id="this.id"></comment-box>
     </div>
 </template>
 
 <script>
+import Comment from "../subcomponents/Comment.vue";
+import { Toast } from "mint-ui";
 export default {
     name: "",
     data() {
         return {
             id: this.$route.params.id,
-            NewsInfo:[]
+            NewsInfo: [],
         };
     },
     created() {
-        this.getNewsInfo()
+        this.getNewsInfo();
     },
     methods: {
-        getNewsInfo(){
-            this.$http.get('/api/vue_cms/newsinfo/'+this.id).then(result=>{
-                if(result.status==200){
-                    this.NewsInfo = result.body[0]
-                }else{
-                    Toast("未获取到新闻详细！")
-                }
-            })
-        }
+        getNewsInfo() {
+            this.$http
+                .get("/api/vue_cms/newsinfo/" + this.id)
+                .then((result) => {
+                    if (result.status == 200) {
+                        this.NewsInfo = result.body[0];
+                    } else {
+                        Toast({
+                            message: "数据未成功加载",
+                            duration: 1000,
+                        });
+                    }
+                });
+        },
     },
-    components: {},
+    components: {
+        "comment-box": Comment,
+    },
 };
 </script>
 
