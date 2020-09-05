@@ -13,7 +13,9 @@
         <!-- 商品详情 -->
         <div class="goodsinfo">
             <!-- 小球动画 -->
-            <div class="ball"></div>
+            <transition @before-enter="beforeEnter" @enter="enter" @after-enter="afterEnter">
+                <div class="ball" v-show="ballFlag" ref="ball"></div>
+            </transition>
             <!-- 商品轮播图展示 -->
             <div class="mui-card">
                 <div class="mui-card-content">
@@ -31,11 +33,14 @@
                             <span class="now-price">￥{{imageInfo.sellPrice}}</span>
                         </p>
                         <div class="number">
-                            <p class="buy-number">购买数量：<number-box></number-box></p>
+                            <p class="buy-number">
+                                购买数量：
+                                <number-box @getCount="getSelectNum" :max="imageInfo.stockQuantity"></number-box>
+                            </p>
                         </div>
                         <p class="next-button">
                             <mt-button type="primary" size="small">立即购买</mt-button>
-                            <mt-button type="danger" size="small">加入购物车</mt-button>
+                            <mt-button type="danger" size="small" @click="addToShopCart()">加入购物车</mt-button>
                         </p>
                     </div>
                 </div>
@@ -71,6 +76,8 @@ export default {
             id: this.$route.params.id,
             imagesList: [],
             imageInfo: {},
+            ballFlag: false,
+            selectNum:1,
         };
     },
     created() {
@@ -120,6 +127,32 @@ export default {
         goGoodsComment(id) {
             this.$router.push({ name: "GoodsComment", params: { id } });
         },
+        addToShopCart() {
+            this.ballFlag = !this.ballFlag;
+        },
+        beforeEnter(el) {
+            el.style.transform = "translate(0,0)";
+        },
+        enter(el, done) {
+            el.offsetWidth;
+            //获取小球位置
+            const ballPosition = this.$refs.ball.getBoundingClientRect();
+            //获取徽标在页面中的位置
+            const badgePosition = document.getElementById("badge").getBoundingClientRect();
+            //计算偏移位置
+            const xDist = badgePosition.left - ballPosition.left;
+            const yDist = badgePosition.top - ballPosition.top;
+            el.style.transform = `translate(${xDist}px,${yDist}px)`;
+            el.style.transition = "all .5s cubic-bezier(.4,-0.3,1,.68)";
+            done();
+        },
+        afterEnter(el) {
+            this.ballFlag = !this.ballFlag;
+        },
+        getSelectNum(count){
+            this.selectNum = count;
+        }
+
     },
     components: {
         "swipe-box": Swipe,
@@ -153,14 +186,9 @@ export default {
         }
     }
     .goodsinfo {
+        position: relative;
         background-color: #eee;
         padding-bottom: 50px;
-        .ball{
-            width: 90px;
-            height: 90px;
-            border-radius: 50%;
-            background-color: red;
-        }
         .mui-card {
             margin-top: 0px;
             .now-price {
@@ -190,7 +218,17 @@ export default {
                     margin: 15px 0;
                 }
             }
-        }  
+        }
+        .ball {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background-color: red;
+            z-index: 99;
+            position: absolute;
+            left: 151px;
+            top: 330px;
+        }
     }
 }
 </style>
