@@ -36,7 +36,9 @@ Vue.use(MintUI)
 import './lib/mui/dist/css/mui.min.css'
 import './lib/mui/dist/css/icons-extra.css'
 
-//导入css样式
+//导入vue-preview
+import VuePreview from 'vue-preview'
+Vue.use(VuePreview);
 
 
 //引入app和路由

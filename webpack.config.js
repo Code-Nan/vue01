@@ -17,9 +17,11 @@ module.exports = {
         contentBase: 'src',
         hot: true,
         inline: true,
+        host:'localhost',
         stats: 'errors-only',
         proxy: {
             '/api': {
+                // target: 'http://10.10.24.118:8888/',
                 target: 'http://localhost:8888/',
                 changeOrigin: true,
                 secure:false,
@@ -79,7 +81,7 @@ module.exports = {
                             "libraryName": "mint-ui",
                             "style": true
                         }
-                    ]]]
+                    ]],"transform-remove-strict-mode"]
                 }
             },
             {

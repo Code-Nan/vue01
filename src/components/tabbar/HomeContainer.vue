@@ -6,11 +6,7 @@
 <template>
     <div>
         <!-- swipe -->
-        <mt-swipe :auto="3000">
-            <mt-swipe-item v-for="item in lunboList" :key="item.id">
-                <img :src="item.imgurl" />
-            </mt-swipe-item>
-        </mt-swipe>
+        <swipe-box :lunboList="this.lunboList" :isFull="true"></swipe-box>
         <!-- 6 grid -->
         <ul class="mui-table-view mui-grid-view mui-grid-9">
             <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
@@ -20,13 +16,13 @@
                 </router-link>
             </li>
             <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-                <router-link to="#">
+                <router-link to="/home/photolist">
                     <img src="/images/menu2.png" />
                     <div class="mui-media-body">图片分享</div>
                 </router-link>
             </li>
             <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-                <router-link to="#">
+                <router-link to="/home/goodslist">
                     <img src="/images/menu3.png" />
                     <div class="mui-media-body">商品购买</div>
                 </router-link>
@@ -54,6 +50,8 @@
 </template>
 
 <script>
+import API from "../../config/api.js";
+import Swipe from "../subcomponents/Swipe.vue";
 export default {
     name: "",
     data() {
@@ -67,7 +65,7 @@ export default {
     methods: {
         getImageList() {
             this.$http
-                .get("/api/vue_cms/lunbo")
+                .get(API.HOME.LUNBO)
                 .then((result) => {
                     if (result.status == 200) {
                         this.lunboList = result.body;
@@ -80,30 +78,13 @@ export default {
                 });
         },
     },
-    components: {},
+    components: {
+        "swipe-box":Swipe,
+    },
 };
 </script>
 
 <style lang="scss" scoped>
-.mint-swipe {
-    height: 200px;
-    .mint-swipe-item {
-        &:nth-child(1) {
-            background-color: red;
-        }
-        &:nth-child(2) {
-            background-color: yellow;
-        }
-        &:nth-child(3) {
-            background-color: cyan;
-        }
-        img {
-            width: 100%;
-            height: 100%;
-        }
-    }
-}
-
 .mui-grid-view.mui-grid-9 {
     background-color: #fff;
     border: none;

@@ -1,70 +1,58 @@
 <!--
  * @Author: dongnan
  * @Descripttion: 
- * @Date: 2020-08-15 23:07:39
+ * @Date: 2020-09-05 15:35:13
 -->
 <template>
-    <div class="newsinfo-container">
+    <div class="goodsdesc-container">
         <!-- 返回 -->
-        <div class="return" @click="goBack()">
+        <div class="return" @click="goBack(id)">
             <div class="return-img"></div>
             <p class="return-content">返回</p>
         </div>
-        <!-- 标题 -->
-        <h1 class="title">{{NewsInfo.title}}</h1>
-        <p class="subtitle">
-            <span>发表时间:{{NewsInfo.createTime | dateFormat('YYYY-MM-DD HH:mm:ss')}}</span>
-            <span>点击:{{NewsInfo.click}}次</span>
-        </p>
+        <h1 class="title">{{GoodsDesc.title}}</h1>
         <hr />
-        <!-- 内容 -->
-        <div class="content" v-html="NewsInfo.content"></div>
-        <!-- 评论 -->
-        <comment-box :id="this.id"></comment-box>
+        <div class="content" v-html="GoodsDesc.content"></div>
     </div>
 </template>
 
 <script>
 import API from "../../config/api.js";
-import Comment from "../subcomponents/Comment.vue";
 import { Toast } from "mint-ui";
 export default {
     name: "",
     data() {
         return {
             id: this.$route.params.id,
-            NewsInfo: [],
+            GoodsDesc: {},
         };
     },
     created() {
-        this.getNewsInfo();
+        this.getGoodsDesc();
     },
     methods: {
-        getNewsInfo() {
-            this.$http.get(API.HOME.NEWS.INFO + this.id).then((result) => {
+        goBack(id) {
+            this.$router.push({ name: "GoodsInfo", params: { id } });
+        },
+        getGoodsDesc() {
+            this.$http.get(API.HOME.GOODS.DESC + this.id).then((result) => {
                 if (result.status == 200) {
-                    this.NewsInfo = result.body[0];
+                    this.GoodsDesc = result.body[0];
                 } else {
                     Toast({
-                        message: "数据未成功加载",
+                        message: "未获取到数据！",
                         duration: 1000,
                     });
                 }
             });
         },
-        goBack() {
-            this.$router.go(-1);
-        },
     },
-    components: {
-        "comment-box": Comment,
-    },
+    components: {},
 };
 </script>
 
-<style lang="scss">
-.newsinfo-container {
-    padding: 0 4px;
+<style lang="scss" scoped>
+.goodsdesc-container {
     .return {
         position: fixed;
         left: 10px;
@@ -89,15 +77,9 @@ export default {
     }
     .title {
         font-size: 16px;
-        color: red;
+        color: #226aff;
         text-align: center;
         margin: 15px 0;
-    }
-    .subtitle {
-        font-size: 13px;
-        color: #226aff;
-        display: flex;
-        justify-content: space-between;
     }
     hr {
         margin-top: 0px;
