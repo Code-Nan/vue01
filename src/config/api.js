@@ -6,45 +6,59 @@
 const SERVICE_URL = '/api';
 const API = {
     //评论
-    COMMENT:{
+    COMMENT: {
         //获取评论
-        GET:SERVICE_URL+'/vue_cms/comments/',
+        GET: SERVICE_URL + '/vue_cms/comments/',
         //新增评论
-        ADD:SERVICE_URL+'/vue_cms/postComment/'
+        ADD: SERVICE_URL + '/vue_cms/postComment/'
     },
     //首页
-    HOME:{
+    HOME: {
         //轮播图地址
-        LUNBO:SERVICE_URL+'/vue_cms/lunbo',
+        LUNBO: SERVICE_URL + '/vue_cms/lunbo',
         //新闻资讯
-        NEWS:{
+        NEWS: {
             //新闻列表
-            LIST:SERVICE_URL+'/vue_cms/newslist',
+            LIST: SERVICE_URL + '/vue_cms/newslist',
             //新闻详情
-            INFO:SERVICE_URL+'/vue_cms/newsinfo/'
+            INFO: SERVICE_URL + '/vue_cms/newsinfo/'
         },
         //图片分享
-        PHOTOS:{
+        PHOTOS: {
             //图片分类
-            CATEGORY:SERVICE_URL+'/vue_cms/getPhotoCategory',
+            CATEGORY: SERVICE_URL + '/vue_cms/getPhotoCategory',
             //获取全部列表
-            ALLLIST:SERVICE_URL+'/vue_cms/getAllPhotoList',
+            ALLLIST: SERVICE_URL + '/vue_cms/getAllPhotoList',
             //获取分类列表
-            LIST:SERVICE_URL+'/vue_cms/getPhotoList/',
+            LIST: SERVICE_URL + '/vue_cms/getPhotoList/',
             //获取图片详情
-            INFO:SERVICE_URL+'/vue_cms/getPhotoInfo/',
+            INFO: SERVICE_URL + '/vue_cms/getPhotoInfo/',
             //获取图片详情中的缩略图
-            IMAGES:SERVICE_URL+'/vue_cms/getImages/'
+            IMAGES: SERVICE_URL + '/vue_cms/getImages/'
         },
         //商品购买
-        GOODS:{
+        GOODS: {
             //商品列表
-            LIST:SERVICE_URL+'/vue_cms/getGoodsList',
-            INFO:SERVICE_URL+'/vue_cms/getGoodsInfo/',
-            IMAGES:SERVICE_URL+'/vue_cms/getImages/',
-            DESC:SERVICE_URL+'/vue_cms/getGoodsDesc/'
+            LIST: SERVICE_URL + '/vue_cms/getGoodsList',
+            INFO: SERVICE_URL + '/vue_cms/getGoodsInfo/',
+            IMAGES: SERVICE_URL + '/vue_cms/getImages/',
+            DESC: SERVICE_URL + '/vue_cms/getGoodsDesc/'
         }
-
+    },
+    //购物车
+    SHOPCAR: {
+        LIST: SERVICE_URL + '/vue_cms/getShopList/'
+    },
+    //vuex方法名
+    VUEX: {
+        //添加商品到购物车
+        ADDTOCART: 'addToShopCar',
+        //商品加减数量
+        CHANGE: 'changeGoodsCount',
+        //商品是否选中
+        SELECTED: 'isSelected',
+        //删除商品
+        DELETE: 'deleteGoods'
     }
 }
 export default API

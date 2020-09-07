@@ -40,7 +40,7 @@
                         </div>
                         <p class="next-button">
                             <mt-button type="primary" size="small">立即购买</mt-button>
-                            <mt-button type="danger" size="small" @click="addToShopCart()">加入购物车</mt-button>
+                            <mt-button type="danger" size="small" @click="addToShopCart">加入购物车</mt-button>
                         </p>
                     </div>
                 </div>
@@ -129,6 +129,13 @@ export default {
         },
         addToShopCart() {
             this.ballFlag = !this.ballFlag;
+            var goods = {
+                id:this.id,
+                count:this.selectNum,
+                selected:true,
+                price:this.imageInfo.sellPrice
+            }
+            this.$store.commit(API.VUEX.ADDTOCART,goods);
         },
         beforeEnter(el) {
             el.style.transform = "translate(0,0)";
@@ -176,7 +183,7 @@ export default {
         .return-img {
             width: 14px;
             height: 14px;
-            background: url("https://dongnan185.cn/vue_cms/icons/return.png")
+            background: url("https://dongnan185.com/images/vue_cms/icons/return.png")
                 no-repeat;
             background-size: 14px 14px;
         }

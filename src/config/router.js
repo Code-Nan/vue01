@@ -4,18 +4,18 @@
  * @Date: 2020-08-10 20:22:55
  */
 import VueRouter from 'vue-router'
-import HomeContainer from './components/tabbar/HomeContainer.vue'
-import MemberContainer from './components/tabbar/MemberContainer.vue'
-import ShopCarContainer from './components/tabbar/ShopCarContainer.vue'
-import SearchContainer from './components/tabbar/SearchContainer.vue'
-import NewsList from './components/news/NewsList.vue'
-import NewsInfo from './components/news/NewsInfo.vue'
-import PhotoList from './components/photos/PhotoList.vue'
-import PhotoInfo from './components/photos/PhotoInfo.vue'
-import GoodsList from './components/goods/GoodsList.vue'
-import GoodsInfo from './components/goods/GoodsInfo.vue'
-import GoodsDesc from './components/goods/GoodsDesc.vue'
-import GoodsComment from './components/goods/GoodsComment.vue'
+import HomeContainer from '../components/tabbar/HomeContainer.vue'
+import MemberContainer from '../components/tabbar/MemberContainer.vue'
+import ShopCarContainer from '../components/tabbar/ShopCarContainer.vue'
+import SearchContainer from '../components/tabbar/SearchContainer.vue'
+import NewsList from '../components/news/NewsList.vue'
+import NewsInfo from '../components/news/NewsInfo.vue'
+import PhotoList from '../components/photos/PhotoList.vue'
+import PhotoInfo from '../components/photos/PhotoInfo.vue'
+import GoodsList from '../components/goods/GoodsList.vue'
+import GoodsInfo from '../components/goods/GoodsInfo.vue'
+import GoodsDesc from '../components/goods/GoodsDesc.vue'
+import GoodsComment from '../components/goods/GoodsComment.vue'
 
 var router = new VueRouter({
     routes: [

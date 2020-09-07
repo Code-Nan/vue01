@@ -41,8 +41,8 @@ export default {
             slideList: [],
             slide1: [
                 {
-                    src: "https://dongnan185.cn/vue_cms/PhotoList/21/1.jpg",
-                    msrc: "https://dongnan185.cn/vue_cms/PhotoList/21/1.jpg",
+                    src: "https://dongnan185.com/images/vue_cms/PhotoList/21/1.jpg",
+                    msrc: "https://dongnan185.com/images/vue_cms/PhotoList/21/1.jpg",
                     alt: "picture1",
                     title: "Image Caption 1",
                     w: 900,
@@ -59,8 +59,8 @@ export default {
                     h: 900,
                 },
                 {
-                    src: "https://dongnan185.cn/vue_cms/PhotoList/21/1.jpg",
-                    msrc: "https://dongnan185.cn/vue_cms/PhotoList/21/1.jpg",
+                    src: "https://dongnan185.com/images/vue_cms/PhotoList/21/1.jpg",
+                    msrc: "https://dongnan185.com/images/vue_cms/PhotoList/21/1.jpg",
                     alt: "picture3",
                     title: "Image Caption 1",
                     w: 900,
@@ -141,7 +141,7 @@ export default {
         .return-img {
             width: 14px;
             height: 14px;
-            background: url("https://dongnan185.cn/vue_cms/icons/return.png")
+            background: url("https://dongnan185.com/images/vue_cms/icons/return.png")
                 no-repeat;
             background-size: 14px 14px;
         }

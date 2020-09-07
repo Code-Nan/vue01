@@ -41,18 +41,20 @@ import VuePreview from 'vue-preview'
 Vue.use(VuePreview);
 
 
-//引入app和路由
+//引入app、路由、vuex
 import app from './App.vue'
-import router from './router.js'
+import router from './config/router.js'
+import store from './config/store.js'
 
 var vm = new Vue({
     el: '#app',
     render: c => c(app),
-    router
+    router,
+    store
 })
 
 //获取当前时间
-Vue.prototype.getNowFormatDate = function() {
+Vue.prototype.getNowFormatDate = function () {
     let date = new Date();
     let year = date.getFullYear();
     let month = date.getMonth() + 1;
@@ -60,7 +62,7 @@ Vue.prototype.getNowFormatDate = function() {
     let hour = date.getHours();
     let minute = date.getMinutes();
     let second = date.getSeconds();
-    let dateStr = year+'-'+month+'-'+day+' '+hour+':'+minute+':'+second;
+    let dateStr = year + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':' + second;
     return moment(dateStr).format('YYYY-MM-DD HH:mm:ss')
-  };
+};
 

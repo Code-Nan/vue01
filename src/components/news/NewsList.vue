@@ -117,7 +117,7 @@ export default {
         .return-img {
             width: 14px;
             height: 14px;
-            background: url("https://dongnan185.cn/vue_cms/icons/return.png")
+            background: url("https://dongnan185.com/images/vue_cms/icons/return.png")
                 no-repeat;
             background-size: 14px 14px;
         }
